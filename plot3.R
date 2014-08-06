@@ -1,4 +1,4 @@
-## Read in the data. Here, csv2 is used because it specifies header=TRUE and sep=";" by default.
+## Read in the data using read.table with correct specifications
 powertable <- read.table("household_power_consumption.txt", header = TRUE, sep =";", na.strings = "?", stringsAsFactors = FALSE)
 
 ## Convert the dates column to the Date class specifying dd/mm/yyyy format
