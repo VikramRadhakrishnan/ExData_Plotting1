@@ -1,5 +1,12 @@
+## Check if data exists. If not, download it.
+if(!file.exists("household_power_consumption/household_power_consumption.txt")) {
+  fileURL <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+  download.file(fileURL, destfile = "household_power_consumption.zip", method = "curl")
+  unzip("household_power_consumption.zip", exdir = "household_power_consumption/household_power_consumption.txt")
+}
+
 ## Read in the data using read.table with correct specifications.
-powertable <- read.table("household_power_consumption.txt", header = TRUE, sep =";", na.strings = "?", stringsAsFactors = FALSE)
+powertable <- read.table("household_power_consumption/household_power_consumption.txt", header = TRUE, sep =";", na.strings = "?", stringsAsFactors = FALSE)
 
 ## Convert the dates column to the Date class specifying dd/mm/yyyy format
 powertable$Date <- as.Date(powertable$Date, "%d/%m/%Y")
